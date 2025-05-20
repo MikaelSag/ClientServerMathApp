@@ -27,6 +27,48 @@
    - `make run-client`  
      → if the server and client are on the same machine and the server is using the default port `6789`
    - `make run-client IP=<server-ip-address> PORT=<port>`  
-     → if the server and client are on different machines or if the server is using a different port  
+     → if the server and client are on different machines or if the server is using a different port
+
+
+# Parameters Needed During Execution
+
+## Server
+
+- `PORT=<port>`  
+  If no value is given, the port number will default to **6789**.
+
+---
+
+## Client
+
+- `IP=<server-ip-address>`  
+  If no value is given, the IP address will default to **127.0.0.1**  
+  → This will always work if the client and server are being run on the **same machine**.
+
+- `PORT=<port>`  
+  If no value is given, the port number will default to **6789**  
+  → The port number for the client **must match** the port number used by the server.
+
+---
+
+## Examples
+
+- `make run-server`  
+  → Port = **6789**
+
+- `make run-server PORT=6790`  
+  → Port = **6790**
+
+- `make run-client`  
+  → IP Address = **127.0.0.1**  
+  → Port = **6789**
+
+- `make run-client IP=192.168.40.4`  
+  → IP Address = **192.168.40.4**  
+  → Port = **6789**
+
+- `make run-client IP=192.168.40.4 PORT=6790`  
+  → IP Address = **192.168.40.4**  
+  → Port = **6790**
 
 4. Repeat steps 1–3 for any additional clients.
