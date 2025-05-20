@@ -132,10 +132,10 @@
 # Sample Output
 
 ## Server:  
-[!serverOutput]()
+[!serverOutput](https://github.com/MikaelSag/ClientServerMathApp/blob/main/images/serveroutput.png?raw=true)
 
-## Client 1 on Machine 1:
-[!client1Output]()
+## Client 1:
+![client1Output](https://github.com/MikaelSag/ClientServerMathApp/blob/main/images/client1output.png?raw=true)
 
-## Client 2 on Machine 2:
-[!client2Output]()
+## Client 2:
+![client2Output](https://github.com/MikaelSag/ClientServerMathApp/blob/main/images/client2output.png?raw=true)
