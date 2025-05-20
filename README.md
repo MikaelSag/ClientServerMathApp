@@ -28,6 +28,7 @@
      → if the server and client are on the same machine and the server is using the default port `6789`
    - `make run-client IP=<server-ip-address> PORT=<port>`  
      → if the server and client are on different machines or if the server is using a different port
+4. Repeat steps 1–3 for any additional clients.
 
 
 # Parameters Needed During Execution
@@ -67,8 +68,74 @@
   → IP Address = **192.168.40.4**  
   → Port = **6789**
 
+
+# Protocol Design
+
+## Message Format for Sending and Receiving Math Calculations
+
+**Client → Server:**  
+`REQ|<client-name>|<expression>`  
+*Example:*  
+`REQ|Alex|3*4+8`
+
+**Server → Client:**  
+`RES|<client-name>|<expression>|<result>`  
+*Example:*  
+`RES|Alex|3*4+8|20.0`
+
+---
+
+## Message Format for Joining and Terminating Connection
+
+**Join Session (Client → Server):**  
+`JOIN|<client-name>`  
+*Example:*  
+`JOIN|Alex`
+
+**Acknowledge Join (Server → Client):**  
+`ACK|Welcome <client-name>`  
+*Example:*  
+`ACK|Welcome Alex`
+
+**Quit (Client → Server):**  
+`QUIT|<client-name>`  
+*Example:*  
+`QUIT|Alex`
+
+**Disconnect (Server → Client):**  
+*No reply.*
+
+---
+
+## Server-Side Logging Format
+
+**Join Log:**  
+`JOIN|<client-name>|address=<ip-address:port>`  
+*Example:*  
+`JOIN|Alex|address=/127.0.0.1:51756`
+
+**Request Result Log:**  
+`RES|<client-name>|<expression>|<result>|processingTime=<ms>ms`  
+*Example:*  
+`RES|Alex|2+3*2|8.0|processingTime=1ms`
+
+**Quit Log:**  
+`QUIT|<client-name>`  
+*Example:*  
+`QUIT|Alex`
+
 - `make run-client IP=192.168.40.4 PORT=6790`  
   → IP Address = **192.168.40.4**  
   → Port = **6790**
 
-4. Repeat steps 1–3 for any additional clients.
+
+# Sample Output
+
+## Server:  
+[!serverOutput]()
+
+## Client 1 on Machine 1:
+[!client1Output]()
+
+## Client 2 on Machine 2:
+[!client2Output]()
